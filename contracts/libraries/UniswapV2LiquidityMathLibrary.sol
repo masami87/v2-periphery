@@ -14,7 +14,7 @@ library UniswapV2LiquidityMathLibrary {
     using SafeMath for uint256;
 
     // computes the direction and magnitude of the profit-maximizing trade
-    // TODO https://github.com/Uniswap/v2-periphery/issues/103#issuecomment-933029929
+    // TODO: https://github.com/Uniswap/v2-periphery/issues/103#issuecomment-933029929
     function computeProfitMaximizingTrade(
         uint256 truePriceTokenA,
         uint256 truePriceTokenB,
