@@ -95,7 +95,6 @@ contract UniswapV2Router01 is IUniswapV2Router01 {
         if (msg.value > amountETH) TransferHelper.safeTransferETH(msg.sender, msg.value - amountETH); // refund dust eth, if any
     }
 
-    // TODO: next
     // **** REMOVE LIQUIDITY ****
     function removeLiquidity(
         address tokenA,
@@ -133,6 +132,7 @@ contract UniswapV2Router01 is IUniswapV2Router01 {
         );
         TransferHelper.safeTransfer(token, to, amountToken);
         IWETH(WETH).withdraw(amountETH);
+        // NOTE: send ETH instead of WETH
         TransferHelper.safeTransferETH(to, amountETH);
     }
     function removeLiquidityWithPermit(
