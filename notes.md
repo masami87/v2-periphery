@@ -1,0 +1,13 @@
+# v2-periphery
+
+## v2-router02
+
+为什么_swao函数指定了amouns但是_swapSupportingFeeOnTransferTokens没有:
+
+_swap和_swapSupportingFeeOnTransferTokens两个函数的设计目标不同，因此它们的参数和实现方式也不同。
+
+_swap函数接受一个amounts数组作为参数，这个数组表示在交易路径中每一步的代币数量。这个函数假设所有的交易都是标准的，即没有转账费用。因此，它可以预先计算出每一步需要的代币数量，并将这些数量作为参数传入。
+
+然而，_swapSupportingFeeOnTransferTokens函数是为了支持那些在转账时会收取费用的代币设计的。对于这种代币，我们无法预先准确知道每一步交易后的余额，因为每次转账都会扣除一部分作为费用。因此，这个函数不接受amounts参数，而是在每一步交易后，直接查询余额来确定下一步的交易数量。
+
+这两个函数的设计都是为了适应不同类型的代币交易，以提供更大的灵活性。
